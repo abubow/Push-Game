@@ -77,7 +77,14 @@ public class Controller : MonoBehaviour
         if (time > 0 && !stopTime)
         {
             time -= Time.deltaTime;
-            gameTimer.text = string.Format("Timer: {0}", Mathf.FloorToInt(time % 60));
+            string timeStr;
+            if (time > 60) {
+                timeStr = string.Format("{0}:{1}", Mathf.FloorToInt(time / 60), Mathf.FloorToInt(time % 60));
+            }
+            else {
+                timeStr = string.Format("0:{0}", Mathf.FloorToInt(time));
+            }
+            gameTimer.text = timeStr;
         }
     }
 
